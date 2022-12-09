@@ -1,0 +1,53 @@
+.text-color1{color: cadetblue;}
+.text-color2{color: bisque;}
+.text-color3{color: coral;}
+.text-color4{color: darkseagreen;}
+.text-color-dark{color:#142c28;}
+.text-color-light{color:#faebd7;}
+
+.bg-color1{background-color: cadetblue;}
+.bg-color2{background-color: bisque;}
+.bg-color3{background-color: coral;}
+.bg-color4{background-color: darkseagreen;}
+.bg-color-dark{background-color: #142c28;}
+.bg-color-light{background-color:#faebd7;}
+
+.f-1{font-size: 1em;}
+.f-2{font-size: 1.25em;}
+.f-3{font-size: 1.5em;}
+.f-4{font-size: 1.75em;}
+.f-5{font-size: 2em;}
+
+.fw-1{font-weight: 100;}
+.fw-2{font-weight: 200;}
+.fw-3{font-weight: 300;}
+.fw-4{font-weight: 900;}
+
+.p-1{padding: 0.25em;}
+.p-2{padding: 0.5em;}
+.p-3{padding: 0.75em;}
+.p-4{padding: 1em;}
+.p-5{padding: 1.25em;}
+.p-6{padding: 1.5em;}
+
+.header-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+
+    padding: 1em 1em 1em 1em;
+    margin: 0;
+    
+   
+}
+.header-container__center-text{
+    text-align: center;
+  
+}
+.al-center{
+    text-align: center;
+    justify-self: center;
+}
