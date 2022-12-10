@@ -16,7 +16,7 @@ const Buscador = ({ onBuscar }) => {
   return (
     <Paper
       component="div"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', maxMidth: 400, marginTop:10  }}
+      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', maxMidth: 400, marginTop:10, marginBottom:5  }}
       
     >
       <InputBase
