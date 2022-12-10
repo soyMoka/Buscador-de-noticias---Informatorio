@@ -9,11 +9,10 @@ import Paper from '@mui/material/Paper';
 
 
 
-
-
 const Buscador = ({ onBuscar }) => {
   const [criterioBusqueda, setCriterioBusqueda] = useState('');
-
+  const [botonActivado, setBotonActivado] = useState(false);
+  
   return (
     <Paper
       component="div"
@@ -27,25 +26,33 @@ const Buscador = ({ onBuscar }) => {
         value={criterioBusqueda}
         onChange={(e) => { 
           setCriterioBusqueda(e.target.value)
+          
+          if(e.target.value.length > 2){
+            setBotonActivado(true)
+          }
+          else {setBotonActivado(false)}
+
         }}
         onKeyDown={(e)=>{
+          
+
           if (criterioBusqueda.length > 2 && e.code === 'Enter')
             {
-              console.log('funcò me parece chin chin')
+              console.log('se activo el if')
               onBuscar(criterioBusqueda)
             }
+          
         }}
       />
       <IconButton
         type="button"
         sx={{ p: '0.5em' }}
         aria-label="search"
+        disabled = {!botonActivado}
         onClick={() => {
+
+          onBuscar(criterioBusqueda)
             
-            if (criterioBusqueda.length > 2)
-            {
-              onBuscar(criterioBusqueda)
-            }
           }
         }
 

@@ -63,8 +63,8 @@ export const ListaNoticias = ({ noticias }) => {
         marginTop: '20px',
       }}>
         {
-          noticias.map((noticia) => {
-            return <Noticia noticia={noticia} onChange={onNoticiaClick}/>
+          noticias.map((noticia, i) => {
+            return <Noticia key={i +'-'+noticia.publishedAt} noticia={noticia} onChange={onNoticiaClick}/>
         })
         }
       </section>

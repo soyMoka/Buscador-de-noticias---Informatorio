@@ -1,7 +1,10 @@
-import { CircularProgress } from "@mui/material"
+import { LinearProgress } from "@mui/material"
 
 const Loading = () => {
-    return <CircularProgress />
+    return (
+        
+        <LinearProgress color="success" className="" />
+    )
 };
 
 export default Loading;

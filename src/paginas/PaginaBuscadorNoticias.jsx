@@ -7,6 +7,7 @@ import Loading from "../components/Loading/Loading";
 import Paginador from "../components/Paginador/Paginador";
 import { ListaNoticias } from "../components/Noticias/Noticias";
 import { getListadoNoticias } from "../services/noticias-api";
+import SinResultados from "../components/Errores/SinResultados";
 
 import { useSearchParams } from "react-router-dom";
 
@@ -23,12 +24,17 @@ const PaginaBuscador = () => {
         if(searchParams.get('query')) {
             buscarNoticia(pagina)
         }
-    }, [searchParams, pagina]);
+    },[searchParams, pagina]);
 
     const buscarNoticia = async () => {
         setIsLoading(true);
-        
         const { articles: news, totalResults } = await getListadoNoticias(searchParams.get('query'), pagina);
+        
+        if (totalResults === 0){
+            console.log('no hay paginas')
+            
+        }
+
         setNoticias(news);
         setCantidadPaginas(Math.ceil(parseInt(totalResults)/10))
         setIsLoading(false);
@@ -46,8 +52,11 @@ const PaginaBuscador = () => {
         <Container maxWidth='sm' >
             <Buscador onBuscar={onBuscar}/>
             { isLoading && <Loading /> }
-            { noticias && <ListaNoticias noticias={noticias}/> }
-            { noticias && <Paginador cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} /> }  
+
+            { noticias && noticias.length === 0 && <SinResultados />}
+
+            { noticias && noticias.length !== 0 && <ListaNoticias noticias={noticias}/> }
+            { noticias && noticias.length !== 0 && <Paginador cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} /> }  
         </Container>
         )
 }
