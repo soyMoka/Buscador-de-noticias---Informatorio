@@ -5,16 +5,7 @@ import { useState } from "react";
 import Paper from '@mui/material/Paper';
 
 
-const handleKeyDown = event => {
-  console.log('User pressed: ', event.key);
 
-  // console.log(message);
-
-  if (event.key === 'Enter') {
-    // 👇️ your logic here
-    console.log('Enter key pressed ✅');
-  }
-};
 
 
 
@@ -37,7 +28,13 @@ const Buscador = ({ onBuscar }) => {
         onChange={(e) => { 
           setCriterioBusqueda(e.target.value)
         }}
-        onKeyDown={handleKeyDown}
+        onKeyDown={(e)=>{
+          if (criterioBusqueda.length > 2 && e.code === 'Enter')
+            {
+              console.log('funcò me parece chin chin')
+              onBuscar(criterioBusqueda)
+            }
+        }}
       />
       <IconButton
         type="button"
