@@ -1,8 +1,9 @@
+import './CuantasNoticias.css'
+
 const CuantasNoticias = (props)=>{
     
-    console.log(props.CuantasNoticiasHay);
     return (
-        <p>Estas viendo 10 noticias de {props.CuantasNoticiasHay} </p>
+        <p className='cuantas-noticias' id='cuantas-noticias'>Estas viendo 10 noticias de {props.CuantasNoticiasHay} </p>
     )
 }
 export default CuantasNoticias;

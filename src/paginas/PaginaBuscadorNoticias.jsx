@@ -20,7 +20,7 @@ const PaginaBuscador = () => {
     const [cantidadPaginas, setCantidadPaginas] = useState(1);
     const [totalNoticias, setTotalNoticias] = useState(0);
     const [pagina, setPagina] = useState(1);
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams, setSearchParams] = useSearchParams('');
 
     useEffect(() => {
         if(searchParams.get('query')) {
@@ -32,10 +32,7 @@ const PaginaBuscador = () => {
         setIsLoading(true);
         const { articles: news, totalResults } = await getListadoNoticias(searchParams.get('query'), pagina);
         
-        if (totalResults === 0){
-            console.log('no hay paginas')
-            
-        }
+       
 
         setNoticias(news);
         setCantidadPaginas(Math.ceil(parseInt(totalResults)/10))
@@ -54,14 +51,9 @@ const PaginaBuscador = () => {
     return (
         <Container maxWidth='sm' >
             <Buscador onBuscar={onBuscar}/>
-            { isLoading && <Loading /> }
-            { noticias && noticias.length !== 0 && <Paginador cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} /> }  
-           
-            
+            { isLoading && <Loading /> } 
             { noticias && noticias.length !== 0 && <CuantasNoticias CuantasNoticiasHay={totalNoticias}/> }
-            
             { noticias && noticias.length === 0 && <SinResultados />}
-        
             { noticias && noticias.length !== 0 && <ListaNoticias noticias={noticias}/> }
             { noticias && noticias.length !== 0 && <Paginador cantidadPaginas={cantidadPaginas} onChange={onCambioPagina} /> }  
         </Container>

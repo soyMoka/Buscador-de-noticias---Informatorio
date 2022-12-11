@@ -38,7 +38,6 @@ const Buscador = ({ onBuscar }) => {
 
           if (criterioBusqueda.length > 2 && e.code === 'Enter')
             {
-              console.log('se activo el if')
               onBuscar(criterioBusqueda)
             }
           

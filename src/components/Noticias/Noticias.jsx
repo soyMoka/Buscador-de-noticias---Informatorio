@@ -5,7 +5,6 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import CardActionArea from '@mui/material/CardActionArea';
 import { DEFAULT_IMAGE, NA } from '../../libs/constantes';
-import { useNavigate } from 'react-router-dom';
 
 
 const Noticia = ({
@@ -49,11 +48,13 @@ const Noticia = ({
 }
 
 export const ListaNoticias = ({ noticias }) => {
-    const navigate = useNavigate();
-    const onNoticiaClick = ({ imdbID }) => {
-      navigate(`/noticias/${imdbID}`);
+    const openInNewTab = (url) => {
+      window.open(url, '_blank', '');
+    };
+    const onNoticiaClick = ({url}) => {
+      openInNewTab(url);
     }
-    console.log(noticias)
+    
     return (
       <section style={{
         display: 'flex',

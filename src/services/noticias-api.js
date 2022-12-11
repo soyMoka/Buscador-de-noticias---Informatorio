@@ -6,15 +6,10 @@ const NOTICIAS_POR_PAGINA = 10;
 export const getListadoNoticias = async (criterioBusqueda, paginaActual) => {
     const respuesta = await fetch(`${OMDB_API}?q=${criterioBusqueda}&apiKey=${API_KEY}&language=${LANG}&page=${paginaActual}&sortBy=publishedAt&pageSize=${NOTICIAS_POR_PAGINA}`);
     const noticias = await respuesta.json();
-    
+/*
     console.log('servicio .json')
     console.log(noticias)
-    
+ */    
     return noticias;
 }
 
-export const getNoticia = async idNoticia => {
-    const respuesta = await fetch(`${OMDB_API}?apikey=${API_KEY}&i=${idNoticia}`);
-    const noticia = await respuesta.json();
-    return noticia;
-}

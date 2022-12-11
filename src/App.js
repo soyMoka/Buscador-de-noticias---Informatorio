@@ -3,7 +3,6 @@
 import './App.css';
 
 import PaginaBuscador from './paginas/PaginaBuscadorNoticias';
-import PaginaDetalle from './paginas/PaginaDetalleNoticia';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Error404 from './components/Errores/404'
@@ -27,11 +26,7 @@ const router = createBrowserRouter([
     path: '/buscador',
     element: <PaginaBuscador />,
   },
-  {
-    path: '/noticias/:id',
-    element: <PaginaDetalle />
 
-  },
   /* Prueba de error 404 */
   {
     path:'/err',
@@ -45,7 +40,7 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-      <div className='test'>
+      <div className='bg-img'>
         <Header />
         <RouterProvider router={router} />
         <div className='relleno'></div>
