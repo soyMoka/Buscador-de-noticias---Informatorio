@@ -40,13 +40,14 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-      <div className='bg-img'>
+      <main className='bg-img'>
         <Header />
+        <main>
         <RouterProvider router={router} />
         <div className='relleno'></div>
+        </main>  
         <Footer></Footer>  
-
-      </div>
+      </main>
       
   );
 }

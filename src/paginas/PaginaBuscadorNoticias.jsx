@@ -20,7 +20,7 @@ const PaginaBuscador = () => {
     const [cantidadPaginas, setCantidadPaginas] = useState(1);
     const [totalNoticias, setTotalNoticias] = useState(0);
     const [pagina, setPagina] = useState(1);
-    const [searchParams, setSearchParams] = useSearchParams('');
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         if(searchParams.get('query')) {
@@ -49,7 +49,7 @@ const PaginaBuscador = () => {
     };
     
     return (
-        <Container maxWidth='sm' >
+        <Container maxWidth='md' >
             <Buscador onBuscar={onBuscar}/>
             { isLoading && <Loading /> } 
             { noticias && noticias.length !== 0 && <CuantasNoticias CuantasNoticiasHay={totalNoticias}/> }
