@@ -20,6 +20,7 @@ const Buscador = ({ onBuscar }) => {
       
     >
       <InputBase
+        data-testid="add-word-input"
         sx={{ ml:1 , flex: 1 }}
         placeholder="Buscar Noticia"
         inputProps={{ 'aria-label': 'search google maps' }}
@@ -44,6 +45,7 @@ const Buscador = ({ onBuscar }) => {
         }}
       />
       <IconButton
+        id='boton-buscar'
         type="button"
         sx={{ p: '0.5em'}}
         

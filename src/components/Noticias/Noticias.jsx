@@ -20,7 +20,6 @@ const Noticia = ({
     const onCardClick = () => {
       onChange && onChange(noticia);
     };
-    
     return (
       <Card sx={{ width: 250, marginBottom: 5 }}>
         <CardActionArea onClick={onCardClick}>
@@ -29,7 +28,7 @@ const Noticia = ({
             height="140"
             width={250}
             image={noticia.urlToImage  === NA ? DEFAULT_IMAGE : noticia.urlToImage}
-            alt={noticia.Title}
+            alt={noticia.title}
           />
           <CardContent>
             <Typography variant="body3" color="text.secondary" >
