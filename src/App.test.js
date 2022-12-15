@@ -1,13 +1,30 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom'
 
+import { unmountComponentAtNode } from 'react-dom';
+
+
 import Buscador from './components/Buscador/Buscador'
-
 import Noticias from './components/Noticias/Noticias'
+import {ListaNoticias} from './components/Noticias/Noticias'
+import { act } from 'react-dom/test-utils';
 
 
+/* #####################| Contenedor |#################### */
+let container = null;
+beforeEach(() => {
+  // setup a DOM element as a render target
+  container = document.createElement("div");
+  document.body.appendChild(container);
+});
 
+afterEach(() => {
+  // cleanup on exiting
+  unmountComponentAtNode(container);
+  container.remove();
+  container = null;
+});
 
 /* ####################| Buscador |################## */
 
@@ -60,12 +77,33 @@ const testNoticia = {
   "publishedAt":"1111-11-11T11:11:11Z",
   "content":"test-content"}
 
+const apiSimListaNoticias = [
+    {
+      "source":{"id":null,"name":"test-name-1"},
+      "author":"test-author-1",
+      "title":"test-title-1",
+      "description":"test-description-1",
+      "url":"test-url-1",
+      "urlToImage":"test-img-1",
+      "publishedAt":"1111-11-11T11:11:11Z",
+      "content":"test-content-1"},
+      {
+        "source":{"id":null,"name":"test-name-2"},
+        "author":"test-author-2",
+        "title":"test-title-2",
+        "description":"test-description-2",
+        "url":"test-url-2",
+        "urlToImage":"test-img-2",
+        "publishedAt":"1111-11-12 T11:11:11Z",
+        "content":"test-content-2"
+      }
+  ];
   
 
 test('Renderizar noticia', ()=>{
   // Arange
-  const noticia = testNoticia;
-  render(<Noticias noticia={noticia}/>)
+  const apiSimNoticia = testNoticia;
+  render(<Noticias noticia={apiSimNoticia}/>)
   // Act
   
   // Assert
@@ -79,6 +117,17 @@ test('Renderizar noticia', ()=>{
 
 
 test('Renderizar lista de noticias', () => {
+  render(<ListaNoticias noticias={apiSimListaNoticias} />)
+
+  expect(screen.getByText('test-author-1')&&screen.getByText('test-author-2')).toBeInTheDocument
   
 });
 
+it('prueba de it y act (renderizar buscador)', () => {
+  act(()=>{
+    render(<Buscador />);
+  })
+expect(screen.getByRole('button')).toBeDisabled()
+expect(container.querySelector('Buscar Noticia')).toBeInTheDocument
+
+});
