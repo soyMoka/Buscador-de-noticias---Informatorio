@@ -1,5 +1,6 @@
 # Buscador de noticias
-
+This app was made in 2022 in a React course as a end of course work.
+ 
 Esta aplición web fue realizada como trabajo final del curso de React del Informatorio en el año 2022
 
 ## Previews
